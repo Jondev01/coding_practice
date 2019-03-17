@@ -15,16 +15,15 @@ class Solution {
         if($nLength == 0)
             return 0;
         for($i=0; $i<$hLength; ++$i){
-            $substr = substr($haystack,$i, $length);
+            $substr = substr($haystack,$i, $nLength);
             if($substr == $needle) {
                 return $i;
             }
         }
         return -1;
-        
-        
-        
     }
 }
+$solution = new Solution();
+var_dump($solution->strStr("mississippi","issippi"));
 
 ?>
