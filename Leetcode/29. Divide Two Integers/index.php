@@ -10,31 +10,25 @@ class Solution {
      */
     private $INT_MAX = 2147483647;
     function divide($dividend, $divisor) {
+        if($divisor == -1 && $dividend == -$this->INT_MAX-1)
+            return $this->INT_MAX;
+        $sign = -1;
+        if(($dividend >=0 && $divisor>0) || ($dividend <=0 && $divisor<0))
+            $sign = 1;
+        $numerator = abs($dividend);
+        $denominator = abs($divisor);
         $res = 0;
-        $number = 0;
-        if($divisor == 1)
-            return $dividend;
-        if($divisor == -1)
-            return -$dividend;
-        if(($dividend >= 0 && $divisor > 0) || $divided <= 0 && $divisor <0) {
-            while($number < $dividend) {
-                $number += $divisor;
-                ++$res; 
+        while($numerator >= $denominator) {
+            $sub = $denominator;
+            $count = 1;
+            while($sub << 1 <= $numerator) {
+                $sub <<= 1;
+                $count <<= 1;
             }
-            if($res > 0)
-                $res -= 1;
-            return $res > $this->INT_MAX ? $this->INT_MAX : $res;
+            $numerator -= $sub;
+            $ans += $count;
         }
-        else {
-            while($number > $dividend) {
-                $number -= $divisor;
-                --$res; 
-            }
-            if($res < 0)
-                $res += 1;
-            return $res < -$this->INT_MAX-1 ? -$this->INT_MAX-1 : $res;
-        }
-
+        return $sign*$ans; 
     }
 }
 
