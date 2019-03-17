@@ -19,7 +19,6 @@ class Solution {
                 $map[$i] = array();
             }
         }
-        var_dump($maps);
         for($i=0; $i<9; ++$i){
             for($j=0; $j<9; ++$j){
                 if($board[$i][$j] == ".")
@@ -29,14 +28,14 @@ class Solution {
                     return false;
                 }
                 else {
-                    $maps["rowsMap"][$i][$board[$i][$j]] = true;
+                    $maps["rowsMap"][$i][$board[$i][$j]] = 1;
                 }
                 //cols
                 if(array_key_exists($board[$i][$j],$maps["colsMap"][$j])) {
                     return false;
                 }
                 else {
-                    $maps["colsMap"][$j][$board[$i][$j]] = true;
+                    $maps["colsMap"][$j][$board[$i][$j]] = 1;
                 }
                 //box
                 $boxIndex = $this->boxIndex($i, $j);
@@ -44,7 +43,7 @@ class Solution {
                     return false;
                 }
                 else {
-                    $maps["boxMap"][$boxIndex][$board[$i][$j]] = true;
+                    $maps["boxMap"][$boxIndex][$board[$i][$j]] = 1;
                 }
             }
         }
