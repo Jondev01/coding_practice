@@ -25,7 +25,7 @@ class Solution {
                 $res .= "$count".$curChar;
                 $curPos--;
             }
-            $dp[i] = $res;
+            $dp[$i] = $res;
         }
         return $dp[$n];
     }

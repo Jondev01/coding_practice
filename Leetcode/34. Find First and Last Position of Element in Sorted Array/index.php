@@ -18,7 +18,6 @@ class Solution {
         );
     }
     private function findLow(&$nums, &$target, $left, $right) {
-        echo "$left $right <br />";
         if($left == $right) {
             return $target == $nums[$left] ? $left : -1;
         }

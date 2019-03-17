@@ -11,8 +11,9 @@ class Solution {
         $index = 0;
         $length = count($nums);
         for($j = 1; $j<$length; ++$j) {
-            if($nums[$index] != $nums[$j]) {
-                $nums[$index+1] = $nums[$j];
+            $temp = $nums[$j];
+            if($nums[$index] != $temp) {
+                $nums[$index+1] = $temp;
                 ++$index;
             }
         }
