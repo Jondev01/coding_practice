@@ -8,29 +8,18 @@ class Solution {
      * @return String[][]
      */
     function groupAnagrams($strs) {
-        $ordered = array();
+        $groupMap = array();
         foreach($strs as $i => $str) {
             $arr = str_split($str);
             sort($arr);
-            $ordered[$i] = implode('',$arr);
+            $sortedString = implode('',$arr);
+            if(array_key_exists($sortedString, $groupMap))
+                array_push($groupMap[$sortedString], $str);
+            else 
+                $groupMap[$sortedString] = array($str);
         }
-        asort($ordered);
         $ret = array();
-        $group = array();
-        $last = 1;
-        foreach($ordered as $key => $str) {
-            if($last == $str)
-                array_push($group, $strs[$key]);
-            else {
-                if(count($group) >0) {
-                    array_push($ret, $group);
-                    $group = array();
-                }
-                array_push($group, $strs[$key]);
-                $last = $str;
-            }
-        }
-        if(count($group)>0)
+        foreach($groupMap as $group)
             array_push($ret, $group);
         return $ret;
     }
